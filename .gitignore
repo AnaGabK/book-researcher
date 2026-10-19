@@ -1,33 +1,43 @@
-HELP.md
+# Arquivos de Configuração Local e Senhas
+.env
+.env.local
+.env.*.local
+
+# Ignorar o application.properties apenas se contiver dados sensíveis locais
+# (Remova o comentário da linha abaixo se quiser ignorá-lo completamente)
+# src/main/resources/application.properties
+
+# Compilação e Artefatos do Java (Maven / Gradle)
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+build/
+.gradle/
+bin/
+*.jar
+*.war
+*.ear
+*.class
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Logs da Aplicação
+*.log
+logs/
 
-### IntelliJ IDEA ###
-.idea
+# Arquivos da IDE - IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Arquivos da IDE - Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+.factorypath
 
-### VS Code ###
+# Arquivos da IDE - VS Code
 .vscode/
+
+# Arquivos do Sistema Operacional
+Thumbs.db
+.DS_Store
