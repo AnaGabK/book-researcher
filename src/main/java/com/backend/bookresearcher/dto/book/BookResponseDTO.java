@@ -7,18 +7,21 @@ import java.time.LocalDate;
 @Getter
 public class BookResponseDTO {
     private Long id;
-    private String title;
-    private String bio;
-    private String theme;
-    private String tipo;
+    private String title, authors, description, theme, type, isbn, language, coverUrl;
+    private Integer pageCount;
     private LocalDate publishingDate;
 
-    public BookResponseDTO(Book book) {
-        this.id = book.getId();
-        this.title = book.getTitle();
-        this.bio = book.getBio();
-        this.theme = book.getTheme();
-        this.tipo = book.getTipo();
-        this.publishingDate = book.getPublishingDate();
+    public BookResponseDTO(Book b) {
+        this.id = b.getId();
+        this.title = b.getTitle();
+        this.authors = b.getAuthors();
+        this.description = b.getDescription();
+        this.theme = b.getTheme();
+        this.type = b.getType();
+        this.isbn = b.getIsbn();
+        this.language = b.getLanguage();
+        this.pageCount = b.getPageCount();
+        this.coverUrl = b.getCoverUrl();
+        this.publishingDate = b.getPublishingDate();
     }
 }

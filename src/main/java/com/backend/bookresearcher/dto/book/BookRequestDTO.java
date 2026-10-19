@@ -1,7 +1,7 @@
 package com.backend.bookresearcher.dto.book;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
@@ -9,19 +9,15 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class BookRequestDTO {
-
-    @NotBlank(message = "O título do livro é obrigatório.")
-    private String title;
-
-    @NotBlank(message = "A bio/descrição do livro é obrigatória.")
-    private String bio;
-
-    @NotBlank(message = "O tema do livro é obrigatório.")
+    @NotBlank private String title;
+    private String authors;
+    @NotBlank private String description;
     private String theme;
-
-    @NotBlank(message = "O tipo do livro é obrigatório.")
-    private String tipo;
-
-    @NotNull(message = "A data de publicação é obrigatória.")
+    private String type;
+    private String isbn;
+    private String language;
+    @Positive
+    private Integer pageCount;
+    private String coverUrl;
     private LocalDate publishingDate;
 }

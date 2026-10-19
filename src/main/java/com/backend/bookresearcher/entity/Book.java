@@ -7,23 +7,43 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "books") // Pluralizado para seguir o padrão
-@Getter
-@Setter
+@Table(name = "books",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"source", "external_id"}))
+@Getter @Setter
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
-    private String bio;
+
+    private String authors;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     private String theme;
-    private String tipo;
+    private String type;
+    private String isbn;
+    private String language;
+
+    @Column(name = "page_count")
+    private Integer pageCount;
+
+    @Column(name = "cover_url", length = 500)
+    private String coverUrl;
 
     @Column(name = "publishing_date")
     private LocalDate publishingDate;
 
+    @Column(length = 30)
+    private String source;                // "OPEN_LIBRARY"
+
+    @Column(name = "external_id")
+    private String externalId;
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews; //List of reviews
+    private List<Review> reviews;
 }

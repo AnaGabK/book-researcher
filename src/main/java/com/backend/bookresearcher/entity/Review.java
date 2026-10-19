@@ -7,9 +7,9 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reviews") // Plural é uma boa prática para tabelas
-@Getter
-@Setter
+@Table(name = "reviews",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "book_id"}))
+@Getter @Setter
 public class Review {
 
     @Id
@@ -17,7 +17,9 @@ public class Review {
     private Long id;
 
     private String title;
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
+
     private int grade;
 
     @Enumerated(EnumType.STRING)
